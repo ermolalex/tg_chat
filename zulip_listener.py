@@ -7,7 +7,7 @@ from app.db import DB
 from app.logger import create_logger
 from app.zulip_client import ZulipClient
 from app.config import settings
-from app import helpers
+from app.helpers import clean_quote
 
 logger = create_logger(logger_name=__name__)
 
@@ -48,7 +48,7 @@ def clean_msg_text(raw_text: str) -> str:
     # чистим тект сообщения
 
     # редактируем цитирование
-    clean_text = helpers.clean_quote(raw_text)
+    clean_text = clean_quote(raw_text)
 
     return clean_text
 

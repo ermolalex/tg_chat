@@ -30,7 +30,7 @@ class ZulipClient():
         except Exception as e:
             self.is_active = False
             logger.fatal(e)
-            # raise ZulipException(e)
+            raise ZulipException(e)
 
     def send_msg_to_channel(self, channel_name: str, topic: str, msg: str) -> str:
         request = {

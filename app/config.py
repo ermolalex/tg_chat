@@ -50,6 +50,8 @@ class Settings():
         else:
             raise ValueError(f'Invalid value for BOOL - {str_bool}.')
 
+settings = Settings()
+
 
 if __name__ == "__main__":
     settings = Settings()

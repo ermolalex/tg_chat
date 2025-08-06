@@ -1,4 +1,4 @@
-from app.helpers import clean_quote
+from app.helpers.helpers import clean_quote
 
 def test_clean_quote():
     raw_text = """

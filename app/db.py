@@ -1,10 +1,8 @@
-import os
 from typing import List
-from datetime import datetime, timezone
 from sqlalchemy import exc
 from sqlmodel import SQLModel, create_engine, Session, select, delete
 from app.models import UserBase, User, TgUserMessageBase, TgUserMessage
-from app.exceptions import UserNotFound, UserPhoneNumberAlreadyExists
+from app.exceptions import UserNotFound
 from app.logger import create_logger
 
 # Extract the filename without extension
