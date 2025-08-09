@@ -56,6 +56,9 @@ class Settings():
         else:
             raise ValueError(f'Invalid value for BOOL - {str_bool}.')
 
+    def get_webhook_url(self):
+        return f"{self.BASE_SITE}/webhook"
+
     def __str__(self):
         res = "Settings:"
         for attr_name in dir(self):
