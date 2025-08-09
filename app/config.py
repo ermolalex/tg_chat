@@ -13,7 +13,13 @@ class Settings():
     ZULIP_STAFF_IDS: list = []
 
     def __init__(self, env_file=''):
-        load_dotenv()
+        if env_file:
+            loaded = load_dotenv(dotenv_path=env_file)
+        else:
+            loaded = load_dotenv()
+
+        if not loaded:
+            raise FileNotFoundError(f'No ENV file {env_file}')
 
         for attr_name in dir(Settings):
             if not attr_name.isupper():
@@ -50,8 +56,20 @@ class Settings():
         else:
             raise ValueError(f'Invalid value for BOOL - {str_bool}.')
 
+    def __str__(self):
+        res = "Settings:"
+        for attr_name in dir(self):
+            if not attr_name.isupper():
+                continue
+
+            attr_val = getattr(self, attr_name)
+            res += f" {attr_name}={attr_val},"
+        return res
+
+
 settings = Settings()
 
 
 if __name__ == "__main__":
     settings = Settings()
+    print(settings)
